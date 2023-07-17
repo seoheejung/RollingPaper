@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <link rel="stylesheet" href="/public/main.css" >
+        <title>RollingPaper</title>
+    </head>
+    <body>
+        <div class="mainContainer slide-in">
+            <div class="center">
+                <div class="menu" onclick="history.back(-1)">
+                    <h5 class="container mt-2"><strong>< back </strong></h5>
+                </div>
+                <div class="card text-center" style="width: 100%;">
+                    <img src="../public/img/img_2.jpg " class="card-img-top imgLogin" alt="...">
+                    <div class="card-footer text-muted">
+                    JOIN
+                    </div>
+                    <div class="card-body">
+                    <div class="container">
+                        <form action="/join" method="POST" onsubmit="return checkForm();">
+                        <label for="email" class="container">EMAIL</label>
+                            <div class="input-group">
+                            <input type="email" class="form-control" aria-describedby="emailCheck" id="email" name="email" placeholder="이메일을 입력해주세요" required >
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" id="emailCheck">중복확인</button>
+                            </div>
+                            </div>
+                            <label for="emailCheck" class="container" style="text-align: left; color: #526CA1; font-size:14px; display: none; margin-bottom:-30px"></label>
+                            <input type="hidden" id="check" name="check" value="">
+                            <div class="form-group mt-1">
+                            <label for="NAME" class="container">NAME</label>
+                            <input type="text" class="form-control" id="nickname" name="nickname" placeholder="별명을 입력해주세요" required>
+                            </div>
+                            <div class="form-group" style="margin-top:-12px">
+                            <label for="PASSWORD" class="container">PASSWORD</label>
+                                <input type="password" class="form-control" id="pw" name="pw" placeholder="비밀번호를 입력해주세요" required>
+                            </div>
+                            <button type="submit" class="btn btn-outline-info btn-lg btn-block mt-4">회원가입</button>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script>
+            $('#emailCheck').click(function (e) {
+                if($('#email').val() =='') {
+                    $("label[for='emailCheck']").text('이메일을 입력해주세요.');
+                    $("label[for='emailCheck']").fadeIn();
+                    $('#email').focus();
+                    return
+                } 
+                $.ajax({
+                    method : 'post',
+                    url : '/emailCheck',
+                    data : { email : $('#email').val() }
+                }).done(function(result) {
+                    // AJAX 성공시 실행할 코드 (서버에서 응답해줘야 실행되는 부분)
+                    $("label[for='emailCheck']").text(result.message).fadeIn('linear');
+                    $('#check').val(result.check);
+                }).fail(function(xhr,code,err) {
+                    console.log(err);
+                    alert(err);
+                    return false;
+                });
+            });
+            function checkForm() {
+                // 아이디 입력 유무 체크
+                if($('#check').val() == '') {
+                    window.alert("이메일 중복확인을 해주셔야 합니다.");
+                    $('#emailCheck').focus();
+                    return false;
+                }
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    </body>
+</html>

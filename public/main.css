@@ -1,0 +1,171 @@
+
+@font-face {
+    /*강원교육모두체 Bold*/
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+*{ font-family: 'GangwonEdu_OTFBoldA'; }
+
+body {
+    background-color: rgb(246, 246, 246);
+}
+
+label, h5 {
+	text-align: left; margin-bottom: 0px;
+
+}
+
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 100vh;
+}
+
+.toNickname {
+    width: calc(100% - 130px);
+    height: 35px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: rgb(52, 47, 47);
+    border: none;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+.container-body {
+    text-align: center;
+    overflow-y: auto;
+    margin: 10px;
+    padding: 10px;
+}
+
+.card {
+    border: 0 !important;
+}
+
+.menu {
+     color: white;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.slide-in {
+    animation: change 0.3s;
+}
+
+@keyframes change {
+    from {
+        transform: translateY(10px);
+        visibility: visible;
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .center {
+        width: 100%;
+        background: linear-gradient(-45deg, #D7D0CC, #BB9BA6, #526CA1, #4B6B9E);
+        height: 100vh;
+        animation: gradient 15s ease infinite;
+    }
+
+    .backgroundMypage {
+        background-image: url("./img/bg_2.jpg");
+        width: 100%;
+        height: 100vh;
+        background-repeat: no-repeat; /* 배경이미지X */
+        background-size: cover; /* 요소를 비율에 맞게 커버 */
+        background-position: center; /* 이미지를 요소의 정가운데로 처리 */
+        overflow-y: auto;
+    }
+    .backgroundWrite {
+        background-image: url("./img/bg_3.jpg");
+        width: 100%;
+        height: 100vh;
+        background-repeat: no-repeat; /* 배경이미지X */
+        background-size: cover; /* 요소를 비율에 맞게 커버 */
+        background-position: center; /* 이미지를 요소의 정가운데로 처리 */
+        overflow-y: auto;
+    }
+
+    .imgLogin {
+        object-fit: cover;
+        object-position: 20% 10%;
+        height: 46vh;
+    }
+
+    .imgMain {
+        object-fit: cover;
+        object-position: 20% 10%;
+        height: 55vh;
+    }
+}
+
+@media (min-width: 600px) {
+    .center {
+        width: 500px;
+        background: linear-gradient(-45deg, #D7D0CC, #BB9BA6, #526CA1, #4B6B9E);
+        animation: gradient 15s ease infinite;
+        height: 100%;
+    }
+
+    .backgroundMypage {
+        background-image: url("./img/bg_2.jpg");
+        background-size: cover;
+        background-attachment: scroll;
+        width: 500px;
+        height: 100vh;
+        background-repeat: no-repeat; /* 배경이미지X */
+        background-size: cover; /* 요소를 비율에 맞게 커버 */
+        background-position: center; /* 이미지를 요소의 정가운데로 처리 */
+        overflow-y: auto;
+    }
+
+    .backgroundWrite {
+        background-image: url("./img/bg_3.jpg");
+        background-size: cover;
+        background-attachment: scroll;
+        width: 500px;
+        height: 100vh;
+        background-repeat: no-repeat; /* 배경이미지X */
+        background-size: cover; /* 요소를 비율에 맞게 커버 */
+        background-position: center; /* 이미지를 요소의 정가운데로 처리 */
+        overflow-y: auto;
+    }
+
+    .imgMain {
+        object-fit: cover;
+        object-position: 20% 10%;
+        height: 600px;
+    }
+
+    .imgLogin {
+        object-fit: cover;
+        object-position: 20% 10%;
+        height: 520px;
+    }
+}

@@ -1,0 +1,4 @@
+TZ=Asia/Seoul
+PORT=8080
+apiURL=http://localhost:8080
+MONGODB=
